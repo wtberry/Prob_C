@@ -1,7 +1,8 @@
 // First C++ program, hw1, what should I create??
-# include <cstdio>
+# include <iostream>
 
-int main(int argc, char** argv)
+int main()
 {
-    printf("Hello World!\n");
-} // end of main
+  std::cout << "Still thinking about what kind of program to write,\n";
+  std::cout << "Maybe Matrix calculator??";
+}
