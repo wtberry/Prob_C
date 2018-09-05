@@ -1,4 +1,5 @@
-*.swp
-lectures/*
-squared/*
-texts/*
+*
+!*.c
+!*.cc
+!Makefile
+!.gitignore
