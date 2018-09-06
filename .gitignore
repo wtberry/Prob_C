@@ -1,5 +1,9 @@
-*
-!*.c
-!*.cc
-!Makefile
-!.gitignore
+# Documentation for .gitignore
+# https://git-scm.com/docs/gitignore
+/*
+!/hw*/
+/hw*/*
+!/hw*/*.cc
+!/hw*/*.h
+!/hw*/*Makefile
+
