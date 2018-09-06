@@ -5,9 +5,9 @@
 
 int main(int argc, char** argv)
 {
-	double x;
-	double y;
-	char op;
+	double x = 0;
+	double y = 0;
+	char op = 'w';
 
 	// then get user input somehow??
 	// how to get user input in C, scanf()
