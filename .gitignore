@@ -6,4 +6,5 @@
 !/hw*/*.cc
 !/hw*/*.h
 !/hw*/*Makefile
+!/hw*/*.md
 
