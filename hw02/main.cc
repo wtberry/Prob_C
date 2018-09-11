@@ -62,6 +62,9 @@ int main(int argc, char** argv){
 	// now time for dot products
 	// make result array first
 	double mat3 [m1 * n2];
+	initializeArray(mat3, m1, n2); // initialize it as all zero
+	printf("printing initial content of m3...");
+	printArray(mat3, m1, n2);
 
 	mat_dot(mat1, mat2, mat3, m1, n1, m2, n2); 
 

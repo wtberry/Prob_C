@@ -67,4 +67,15 @@ void getInput(double* matrix, int m, int n){
 }
 
 
+void initializeArray(double* matrix, int m, int n){
+    	// initialize the array elements to zero
+	//double mat [m][n];
+	//mat = matrix;
+	for(int row=0; row<m; ++row){
+	    //printf("[");
+	    for (int col=0; col<n; ++col){
+	        matrix[n * row+col] = 0; 
+	    }
+	}
+}
 
