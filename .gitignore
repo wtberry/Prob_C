@@ -3,8 +3,15 @@
 /*
 !/hw*/
 /hw*/*
+!/hw*/*/
+/hw*/*/*
 !/hw*/*.cc
 !/hw*/*.h
 !/hw*/*Makefile
 !/hw*/*.md
+!/hw*/*.ipynb
 
+!/hw*/*/*.cc
+!/hw*/*/*.h
+!/hw*/*/*Makefile
+!/hw*/*/*.md
