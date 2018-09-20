@@ -1,10 +1,11 @@
 #include <cstdio>
 #include <stdlib.h>
 
+// two print functions for debugging
 void printIntArray(const int* array, int size){
 
 	for(int i=0; i<size; ++i){
-		printf("%d ", array[i]);
+		printf("%d \n", array[i]);
 	}
 	printf("\n");
 
@@ -20,41 +21,23 @@ void printCharArray(const char* array, int size){
 
 }
 
-char* readHeader(const char* f_name){
-
-	FILE* fp = fopen(f_name, "r");
-	char* array = new char[10];
-	if(fp == NULL) { // if the file does not exits, exit with 1
-	printf("File does not exist, program will be terminated.\n");
-	exit(1);
-
+char* readPpm(const char* f_name, char* magic, int* width, int* height, int* max_pix){
+	FILE* fb = fopen(f_name, "rb"); // open the file
+	printf("Reading the header\n");
+	fscanf(fb, "%s\n%d %d\n%d\n", magic, width, height, max_pix); // write header
+	int pixels = *width * *height * 3;
+	char* array_pix = new char [pixels]; // initialize the heap array
+	printf("now reading raw bytes!\n");
+	fread(array_pix, sizeof(char), (pixels), fb); // return
+	fclose(fb);
+	return array_pix;
 }
-// if it does
-	else{
-		printf("the file exists, proceeding to read.\n");
-		// read the header
-		fscanf(fp, "%c", &array[0]);
-		printf("first character: %c\n", array[0]);
-		
-		int i = 1;	
-		char temp;
-		// now read in the rest of int
-		while(temp != 'n'){ // ==1 works,
-			temp = fscanf(fp, "%c", &array[i]);
-			// maybe while input is integer??
-			i++;
-			
-			printf("reading: %d %c \n", i, temp);
-			if (i == 6) break;
-		}
-	}
 
-
-	return array;
-
+void writePpm(char* array, char* magic, int width, int height, int max_pix){
+	// open the file and initialize the file
+	FILE* fw = fopen("result.ppm", "wb"); 
+	int pixels = width * height * 3;
+	fprintf(fw, "%s\n%d %d\n%d\n", magic, width, height, max_pix); // write header
+	fwrite(array, sizeof(char), (pixels), fw); // write data
+	fclose(fw);
 }
-#if 0
-void readPixels(){
-
-}
-#endif
