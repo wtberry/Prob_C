@@ -21,16 +21,16 @@ void printCharArray(const char* array, int size){
 
 }
 
-char* readPpm(const char* f_name, char* magic, int* width, int* height, int* max_pix){
+char* readPpm(const char* f_name, int* width, int* height){
 	FILE* fb = fopen(f_name, "rb"); // open the file
 	printf("Reading the header\n");
-	fscanf(fb, "%s\n%d %d\n%d\n", magic, width, height, max_pix); // write header
+	fscanf(fb, "%*s\n%d %d\n%*d\n", width, height); // write header
 	int pixels = *width * *height * 3;
 	char* array_pix = new char [pixels]; // initialize the heap array
 	printf("now reading raw bytes!\n");
 	fread(array_pix, sizeof(char), (pixels), fb); // return
 	fclose(fb);
-	return array_pix;
+	return array_pix; // the char flat array
 }
 
 void writePpm(char* array, char* magic, int width, int height, int max_pix){
