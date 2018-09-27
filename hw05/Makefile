@@ -1,7 +1,11 @@
-all: edian
+all: main
 
-edian: edian.o
-	g++ -o edian edian.o
+main.o: main.cc util.h
+	g++ -c -Werror main.cc
 
-edian.o: edian.cc
-	g++ -c -Werror edian.cc
+util.o: util.cc util.h
+	g++ -c -Werror util.cc
+	
+main: main.o util.o
+	g++ -o main main.o util.o
+
