@@ -13,6 +13,16 @@ void printIntArray(const int* array, int size){
 }
 
 
+void printTwoArray(int** array, int m, int n){
+	for(int i=0; i<m; ++i){
+		for(int j=0; j<n; ++j){
+			printf("%d ", array[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
 void printCharArray(const char* array, int size){
 
 	for(int i=0; i<size; ++i){
@@ -38,7 +48,7 @@ int** readPpm(const char* f_name, int* width, int* height){
 	unsigned char* max_pix = (unsigned char*)(&max); // type casting, 255 in hex
 	// declare the 2D array as data int, (width x height)
 	// allocate array of pointers
-	int** array = create_mat(*width, *height);
+	int** array = create_mat(*height, *width);
 	// now go through all the elements in the original char array
 	//for(int e=0; e<pixels, e+3){ // increment by 3, each pixel
 	int c = 0;
@@ -69,6 +79,7 @@ void writePpm(int** array, char* magic, int width, int height, int max_pix){
 	// open the file and initialize the file
 	FILE* fw = fopen("result.ppm", "wb"); 
 	int pixels = width * height * 3;
+	printTwoArray(array, 1, 5);
 	// create the new char flat array to write data from
 	char* array_pix = new char [pixels]; // initialize the heap array
 	int c = 0;
@@ -108,13 +119,14 @@ int** dot_product(int** mat1, int** mat2, int width1, int height1, int width2, i
 	int** mat3 = create_mat(height1, width2);	
 
 	for(int col2=0; col2<width2; ++col2){
-		printf("outer for loop...\n");
+		//printf("outer for loop...\n");
 		for(int row1=0; row1<height1; ++row1){
-			printf("second for loop..\n");
+			//printf("second for loop..\n");
 			for(int col1=0; col1<width1; ++col1){
-				printf("width1, height1, width2, height2: %d, %d, %d, %d\n", width1, height1, width2, height2);
-				printf("row1: %d, col1: %d, col2: %d\n", row1, col1, col2);
+				//printf("width1, %d, height1: %d, width2: %d, height2: %d\n", width1, height1, width2, height2);
+				//printf("row1: %d, col1: %d, col2: %d\n", row1, col1, col2);
 				mat3[row1][col2] += mat1[row1][col1] * mat2[col1][col2];
+				//printf("Matrix value: %d\n", mat3[row1][col2]);
 			}
 		}
 	}
@@ -122,7 +134,7 @@ int** dot_product(int** mat1, int** mat2, int width1, int height1, int width2, i
 
 }
 
-int** create_mat(int width, int height){
+int** create_mat(int height, int width){
 
 	printf("creating the 2D array of size: %d x %d\n", width, height);
 	int** mat= new int* [height];
@@ -140,11 +152,15 @@ int** create_mat(int width, int height){
 
 int** reverse_identity(int size){
 	// input for this method will always be square matrix!
+	printf("***testing reverse Identity");
 	int** mat = create_mat(size, size);
 	for(int row=0; row<size; ++row){
 		//mat[row][size-(row+1)] = 1;
 		for(int col=0; col<size; ++col){
-			if(row+col == size){mat[row][col] = 1;}
+			if(row+col == size-1){
+				mat[row][col] = 1;
+				//printf("row: %d, col: %d\n", row, col);
+			}
 			else{mat[row][col] = 0;}
 		}
 	}
