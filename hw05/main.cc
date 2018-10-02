@@ -34,9 +34,13 @@ int** horizFlipPic = horizFlip(test, m, n);
 printTwoArray(horizFlipPic, m, n);
 #endif
 
-int** horizFlipPic = horizFlip(td_array, height, width);
-printTwoArray(horizFlipPic, 1, 5);
+//int** horizFlipPic = horizFlip(td_array, height, width);
+//printTwoArray(horizFlipPic, 1, 5);
+//writePpm(horizFlipPic, magic, width, height, max_pixel_val);
+//int** vertFlipPic = vertFlip(td_array, height, width);
+//writePpm(vertFlipPic, magic, width, height, max_pixel_val);
 
-writePpm(td_array, magic, width, height, max_pixel_val);
+int** rotated = rotate(td_array, height, width);
+writePpm(rotated, magic, width, height, max_pixel_val);
 
 }

@@ -112,6 +112,29 @@ int** horizFlip(int** picture, int height, int width){
 	return result;
 }
 
+int** vertFlip(int** picture, int height, int width){
+	// flip the pic horizontally
+	// create reverse identity
+	printf("making the inv\n");
+	int** rI = reverse_identity(height);	
+	// perform dot product
+	printf("flopping the pic now...\n");
+	int** result = dot_product(rI, picture, width, height, width, width);
+
+	return result;
+}
+
+int** rotate(int** picture, int height, int width){
+	// flip the pic horizontally
+	// create reverse identity
+	printf("horizontal...\n");
+	int** horiz = horizFlip(picture, height, width);
+	printf("vertical..\n");
+	int** vert = vertFlip(horiz, height, width);
+
+	return vert;
+}
+
 int** dot_product(int** mat1, int** mat2, int width1, int height1, int width2, int height2){
 	// get pointers to the 2D matrix and perform dot product
 	// first declare the result matrix
