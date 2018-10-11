@@ -14,6 +14,7 @@ Github before 5PM Friday.
   	- function declaration: one line of code where programmer *declare* the function before it is being used, to let compiler know that the function exists.
 3. Why would you use unsigned integer?
   	- to store larger number compared to signed int
+	- to place where negative number would be invalid, such as array index
 4. What is wrong with following C++ code? How would you fix it?
 ```cpp
 int sum;
@@ -36,7 +37,7 @@ change `if (n=0) to if (n==0),` so it is comparison instead of assignment.
 
 6. How do you find out how many bytes are used to store a particular datatype in C++? How many bytes are used to store char, short, int, and long variables on your system? What operating system are you using?
 
-- data size can be found out by using `size(var_name)` in c++.
+- data size can be found out by using `sizeof(var_name)` in c++.
 	- char: 1
 	- short: 2
 	- int: 4
