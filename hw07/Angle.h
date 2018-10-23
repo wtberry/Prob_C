@@ -1,3 +1,4 @@
+#include<iostream>
 #ifndef ANGLE_H
 #define ANGLE_H
 
@@ -27,6 +28,12 @@ public:
 	void operator=(const Angle& angle);
 	void operator=(const double angle);
 
+
+	// printable
+	friend std::ostream& operator<<(std::ostream& out, const Angle& a);
+
 }; // semicolon don't forget
+
+//std::ostream& operator<<(std::ostream& out, const Angle& a);
 
 #endif

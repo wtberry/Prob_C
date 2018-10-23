@@ -6,6 +6,7 @@
 #include<cmath>
 #include<cstdio>
 #include "Angle.h"
+#include<iostream>
 
 #define ROUND 360
 
@@ -49,33 +50,29 @@ double Angle::resetAngle(double angle) const{
 }
 
 void Angle::arnold() const{
-	printf("Division by 0, terminating the program1n");
+	std::cout << "Division by 0,  terminating the program1n" << std::endl;
 	exit(1);
 }
 
 
 // overload`
 Angle Angle::operator+(const Angle& angle) const{
-	printf("adding up angles now..");
 	// why can I access angle by angle.angle, not getAngle? thought it was private?
 	return Angle(this->resetAngle((this->angle + angle.angle)));
 }
 
 Angle Angle::operator+=(const Angle& angle) {
-	printf("adding up angles now..");
 	// why can I access angle by angle.angle, not getAngle? thought it was private?
 	this->angle += angle.angle;
 	this->angle = resetAngle(this->angle);
 }
 
 Angle Angle::operator-(const Angle& angle) const{
-	printf("adding up angles now..");
 	// why can I access angle by angle.angle, not getAngle? thought it was private?
 	return (*this)+(-angle.getAngle()); // using + method for -
 }
 
 Angle Angle::operator-=(const Angle& angle) {
-	printf("adding up angles now..");
 	// why can I access angle by angle.angle, not getAngle? thought it was private?
 	this->angle -= angle.angle;
 	this->angle = resetAngle(this->angle);
@@ -118,5 +115,11 @@ void Angle::operator=(const double angle){
 bool Angle::operator==(const Angle& angle)const{
 	if(this->angle == angle.angle) return true;
 	else return false;
+}
+
+// now irintable
+std::ostream& operator<<(std::ostream& out, const Angle& a){
+	out << a.angle << "\u00B0";
+	return out;
 }
 // end of the class
