@@ -14,7 +14,8 @@
 Angle::Angle(){
 	// empty const, initialize angle to 0
 	this->angle = 0;
-	this->sin = 0;
+	this->sin_val = 0;
+	this->cos_val = 0;
 	resetTrig();
 	
 }
@@ -23,6 +24,8 @@ Angle::Angle(double angle){
 	// standard const with input
 	// make sure the angle is correct ranage
 	this->angle = this->resetAngle(angle); 
+	this->sin_val = 0;
+	this->cos_val = 0;
 	resetTrig();
 }
 

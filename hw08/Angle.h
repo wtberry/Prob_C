@@ -1,15 +1,16 @@
-#include<iostream>
 #ifndef ANGLE_H
 #define ANGLE_H
+#include<iostream>
+#include"Log.h"
 
 class Angle{
 
 private:
 	double angle;
-	double sin_val;
-	double cos_val;
-	bool have_sin;
-	bool have_cos;
+	mutable double sin_val;
+	mutable double cos_val;
+	mutable bool have_sin;
+	mutable bool have_cos;
 
 public:
 	Angle();
@@ -17,8 +18,8 @@ public:
 	virtual ~Angle();
 
 	double getAngle() const; // don't forget const
-	double getSin();
-	double getCos();
+	double getSin() const;
+	double getCos() const;
 	void setAngle(double angle);
 	double resetAngle(double angle) const;
 	void resetTrig(); // reset the trig bool to false
@@ -38,6 +39,7 @@ public:
 
 	// printable
 	friend std::ostream& operator<<(std::ostream& out, const Angle& a);
+
 
 }; // semicolon don't forget
 

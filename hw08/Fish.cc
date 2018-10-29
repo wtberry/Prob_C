@@ -3,24 +3,36 @@
 
 #include<cmath>
 #include<cstdlib> // for rand()
+#include"Population.h"
 #include "Angle.h"
+#include "Fish.h"
 #include<iostream>
 
 // MAYBE use construct to get argumnets here??
-Fish::Fish(double x, double y, unsigned double speed, double direction, double t_rate){
-	// empty const for fish, calls empty const
-	x = 0;
-	y = 0;
-	speed = 0;
-	Angle direction(direction);
-	Angle t_rate(t_rate);
+Fish::Fish(double x, double y, double speed, double dir, double turn, Population* sea)
+	: direction(dir), // declaring non-default const for angle
+	  t_rate(turn)
+{
+	this->x = x;
+	this->y = y;
+	this->speed = speed;
+	this->sea = sea;
+	sea->add(this); // saving itself to population, this is pointer
+
+	struct location{
+		int x_;
+		int y_;
+	};
+	
 }
 
 Fish::~Fish(){ // empty destructor for now
+	sea->remove(this);
+	std::cout << "Removing fish from population" << std::endl;
 }
 
 
-Fish::swim(){
+void Fish::swim(){
 
 	// generate random directions
 	// what if fish decides to go straight?
@@ -33,9 +45,25 @@ Fish::swim(){
 	
 }
 
+struct Fish::whereIsFish() const{
+	struct foud_it;
+	found_it.x_ = this->x;
+	found_it.y_ = this->y;
+
+	return found_it;
+}
+
+
+
+// compare opps
+bool Fish::operator==(const Fish& fish) const{
+	return ((this->x == fish.x) && (this->y == fish.y) && (this->speed == fish.speed) && (this->direction == fish.direction) && (this->t_rate == fish.t_rate));
+}
+
+
 // now printable
 std::ostream& operator<<(std::ostream& out, const Fish& fish){
-	out << fish.angle << "\u00B0";
+	out << "Location: " << "(" << fish.x <<", " << fish.y << ") " << "Dir: "<< fish.direction.getAngle() << "\u00B0, " << "Turn Angle: " << fish.t_rate.getAngle() << "\u00B0";
 	return out;
 }
 
