@@ -1,17 +1,21 @@
 #ifndef FISH_H // always declare the class first, before includes anything
 #define FISH_H
 #include<iostream>
+#include<cmath>
 #include"Angle.h"
+#include"Point.h"
+#include"Population.h"
 #include"Log.h"
 
+
 class Angle;
+class Point;
 class Population;
 
 class Fish{
 
 private:
-	double x;
-	double y;
+	Point location;
 	double speed; //speed is always positive
 	Angle direction;
 	Angle  t_rate; // turning rate
@@ -27,7 +31,7 @@ public:
 	//void resetTrig(); // reset the trig bool to false
 	//void arnold() const;
 	void swim(); // decide random angle to swim to
-	struct whereIsFish() const;
+	Point whereIsFish() const;
 	bool operator==(const Fish& fish) const;
 
 

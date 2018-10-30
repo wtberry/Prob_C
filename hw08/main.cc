@@ -2,6 +2,7 @@
 #include "Angle.h"
 #include "Fish.h"
 #include "Log.h"
+#include "Point.h"
 #include<iostream>
 #include<cstdio>
 
@@ -47,27 +48,38 @@ int main(){
 	//NOW simulation time!!
 	// make the ocean
 	Population atlantic; // no () needed for empty const
+	Point zero(0, 0); // the zero in the Atlantic
 
 	// create fish
 	Fish salmon(0, 0, 50, 20, 80, &atlantic);	
 	Fish tuna(0, 0, 100, -100, 130, &atlantic);
 	Fish sushi(0, 0, 2.4, 43.22, 4.5, &atlantic);
 	Fish catfish(0, 0, 3, 20, 0, &atlantic);
-	Fish nemo(0, 0, 2, 350, -180, &atlantic);
+	Fish nemo(0, 0, 2, 350, -80, &atlantic);
 	Fish greatWhite(0, 0, 40, 300, 300, &atlantic);
 	Fish hammerHead(0, 0, 30, 200, 200, &atlantic);
 	Fish blackBeard(0, 0, 10, 10, 78.3, &atlantic);
+
+	blackBeard.~Fish(); // delete the fish
 	// timer
-	for(int t=0; t<3; ++t){
-		std::cout << "******** TimeStamp: " << t << "*********" << std::endl;
+	//for(int t=0; t<30; ++t){
+	int t = 0;
+	while(atlantic.getSize() > 0){ // run until all the fish are dead
+		std::cout << "\n######### TimeStamp: " << t << " #########\n" << std::endl;
 		for(int f=0; f<atlantic.getSize(); ++f){
 			atlantic[f].swim();
 			std::cout << atlantic[f] << std::endl;
-			atlantic[f].
+			double distance  = atlantic[f].whereIsFish().euclid(zero);
+			std::cout << "Distance: " << distance << std::endl;
+			if(distance > 100){
+				atlantic[f].~Fish(); // delte the fish
+				std::cout << "************* FISH DELETED *******" << std::endl;
+			}
 		}
+		t++;
+		std::cout << "\n---------------------------------------------" << std::endl;
 
 	}
 
 }
-
 

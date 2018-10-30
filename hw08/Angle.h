@@ -2,6 +2,9 @@
 #define ANGLE_H
 #include<iostream>
 #include"Log.h"
+#include"Point.h"
+
+class Point;
 
 class Angle{
 

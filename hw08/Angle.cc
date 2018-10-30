@@ -6,6 +6,7 @@
 #include<cmath>
 #include<cstdio>
 #include "Angle.h"
+#include"Point.h"
 #include<iostream>
 
 #define ROUND 360
