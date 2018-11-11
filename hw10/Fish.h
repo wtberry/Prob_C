@@ -6,12 +6,10 @@
 #include<vector>
 #include"Angle.h"
 #include"Point.h"
-#include"Population.h"
 #include"Log.h"
 
 
 class Point;
-class Population;
 
 class Fish{
 

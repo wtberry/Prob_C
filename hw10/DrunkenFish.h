@@ -5,12 +5,10 @@
 #include<cmath>
 #include"Angle.h"
 #include"Point.h"
-#include"Population.h"
 #include"Log.h"
 
 // Arent these inherited from Fish??
 class Point;
-class Population;
 
 class DrunkenFish : public Fish {
 

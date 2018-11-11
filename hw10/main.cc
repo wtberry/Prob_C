@@ -83,19 +83,20 @@ int main(){
 	Point zero(0, 0); // the zero in the Atlantic
 	//  create bunch of fish
 	//  First Flippy
-	FlippyFish flip1(0, 0, 10, 200, 40, &pacific);
-	FlippyFish flip2(0, 0, 20, -200, -40, &pacific);
-	FlippyFish flip3(0, 0, 30, 20, 50, &pacific);
-	FlippyFish flip4(0, 0, 40, 40, 80, &pacific);
-	FlippyFish flip5(0, 0, 50, 60, 150, &pacific);
-	FlippyFish flip6(0, 0, 60, -120, 240, &pacific);
+	//  HEAP FISH
+	FlippyFish* flip1 = new FlippyFish(0, 0, 10, 200, 40, &pacific);
+	FlippyFish* flip2 = new FlippyFish(0, 0, 20, -200, -40, &pacific);
+	FlippyFish* flip3 = new FlippyFish(0, 0, 30, 20, 50, &pacific);
+	FlippyFish* flip4 = new FlippyFish(0, 0, 40, 40, 80, &pacific);
+	FlippyFish* flip5 = new FlippyFish(0, 0, 50, 60, 150, &pacific);
+	FlippyFish* flip6 = new FlippyFish(0, 0, 60, -120, 240, &pacific);
 	// then give them some drink
-	DrunkenFish drunk1(0, 0, 10, &pacific);
-	DrunkenFish drunk2(0, 0, 20, &pacific);
-	DrunkenFish drunk3(0, 0, 30, &pacific);
-	DrunkenFish drunk4(0, 0, 40, &pacific);
-	DrunkenFish drunk5(0, 0, 50, &pacific);
-	DrunkenFish drunk6(0, 0, 60, &pacific);
+	DrunkenFish* drunk1 = new DrunkenFish(0, 0, 10, &pacific);
+	DrunkenFish* drunk2 = new DrunkenFish(0, 0, 20, &pacific);
+	DrunkenFish* drunk3 = new DrunkenFish(0, 0, 30, &pacific);
+	DrunkenFish* drunk4 = new DrunkenFish(0, 0, 40, &pacific);
+	DrunkenFish* drunk5 = new DrunkenFish(0, 0, 50, &pacific);
+	DrunkenFish* drunk6 = new DrunkenFish(0, 0, 60, &pacific);
 
 	// now test the print methods for each fish in pacific
 	std::cout << "######## Testing the printing in pacific fish ####### \n" << std::endl;
@@ -121,9 +122,9 @@ int main(){
 		// otehr iterator
 		std::vector<Fish*>::iterator j;
 		for(int j=0; j <pacific.size(); j++){
-			(*pacific[j]).swim();
+			pacific[j]->swim(); // pointer to method
 			std::cout << (*pacific[j]) << std::endl;
-			double distance  = (*pacific[j]).whereIsFish().euclid(zero);
+			double distance  = pacific[j]->whereIsFish().euclid(zero);
 			std::cout << "Distance: " << distance << "\n" << std::endl;
 			//std::cout << "Forever loop??" << std::endl;
 			if(distance > 100){

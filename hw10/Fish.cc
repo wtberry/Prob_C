@@ -4,7 +4,6 @@
 #include<vector>
 #include<cmath>
 #include<cstdlib> // for rand()
-#include"Population.h"
 #include "Angle.h"
 #include "Fish.h"
 #include "Point.h"
